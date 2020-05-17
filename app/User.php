@@ -1,0 +1,44 @@
+<?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+//edu use Illuminate\Contracts\Auth\MustVerifyEmail;
+//edu use Illuminate\Foundation\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;//edu 
+use Illuminate\Auth\Authenticatable as AuthenticableTrait; //edu 
+use Illuminate\Contracts\Auth\Authenticatable;  //edu 
+
+class User extends Eloquent implements Authenticatable //edu    
+{
+    use AuthenticableTrait; //edu
+    use Notifiable;
+
+    protected $connection = 'mongodb'; //edu
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+}
