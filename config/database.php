@@ -104,7 +104,7 @@ return [
         ],
 
 
-      
+        // pruebas para atlas sgit sat
         'mongodb_conn' => [
             'driver' => 'mongodb',
             // 'url'   => env('dsn'),
